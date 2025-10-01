@@ -11,15 +11,20 @@
   <!-- Header -->
   <header class="bg-indigo-600 text-white shadow-md sticky top-0 z-50">
     <div class="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
-      <h1 class="text-2xl font-bold">🌐 Hosting Giá Rẻ</h1>
-      <nav>
-        <ul class="flex space-x-6 font-medium">
-          <li><a href="#cheap" class="hover:text-yellow-300">Cheap</a></li>
-          <li><a href="#basic" class="hover:text-yellow-300">Basic</a></li>
-          <li><a href="#medium" class="hover:text-yellow-300">Medium</a></li>
-          <li><a href="#premium" class="hover:text-yellow-300">Premium</a></li>
+      <h1 class="text-2xl font-bold">🌐 EnderCloud</h1>
+
+      <!-- Dropdown chọn hosting -->
+      <div class="relative">
+        <button onclick="toggleMenu()" class="bg-white text-indigo-700 px-4 py-2 rounded-lg font-bold">
+          CHỌN DANH MỤC DỊCH VỤ KHÁC ▼
+        </button>
+        <ul id="dropdownMenu" class="absolute right-0 mt-2 bg-white text-black rounded-lg shadow-lg w-64 hidden">
+          <li><a href="#cheap" class="block px-4 py-2 hover:bg-indigo-100">🔥 Cheap Hosting</a></li>
+          <li><a href="#basic" class="block px-4 py-2 hover:bg-indigo-100">💡 Basic Hosting</a></li>
+          <li><a href="#medium" class="block px-4 py-2 hover:bg-indigo-100">⚡ Medium Hosting</a></li>
+          <li><a href="#premium" class="block px-4 py-2 hover:bg-indigo-100">💎 Premium Hosting</a></li>
         </ul>
-      </nav>
+      </div>
     </div>
   </header>
 
@@ -33,11 +38,13 @@
   <main class="max-w-7xl mx-auto px-6 py-12 space-y-16" id="plansContainer"></main>
 
   <!-- Cart -->
-  <div id="giohang" class="fixed bottom-4 right-4 bg-white border shadow-lg p-4 rounded-xl w-72 hidden">
+  <div id="giohang" class="fixed bottom-4 right-4 bg-white border shadow-lg p-4 rounded-xl w-80 hidden">
     <h4 class="font-bold text-lg mb-2">🛒 Giỏ hàng</h4>
     <ul id="cartItems" class="text-sm text-gray-700 space-y-2"></ul>
-    <button onclick="thanhToan()" 
-            class="mt-4 w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-800">Thanh toán</button>
+    <div class="flex space-x-2 mt-4">
+      <button onclick="thanhToan()" class="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-800">Thanh toán</button>
+      <button onclick="huyGioHang()" class="flex-1 bg-red-600 text-white py-2 rounded-lg hover:bg-red-800">Hủy</button>
+    </div>
   </div>
 
   <!-- Footer -->
@@ -47,6 +54,12 @@
 
   <!-- Script -->
   <script>
+    // toggle dropdown
+    function toggleMenu() {
+      document.getElementById("dropdownMenu").classList.toggle("hidden");
+    }
+
+    // dữ liệu hosting
     const plansData = {
       cheap: {
         title: "🔥 Cheap Plans (E5-2680 v4 @ 3.3GHz)",
@@ -102,7 +115,7 @@
       }
     };
 
-    // render all sections
+    // render plans
     function renderPlans() {
       const container = document.getElementById("plansContainer");
       container.innerHTML = "";
@@ -144,19 +157,37 @@
       const cartBox = document.getElementById("giohang");
       const list = document.getElementById("cartItems");
       list.innerHTML = "";
-      cart.forEach(item => {
+      cart.forEach((item, index) => {
         list.innerHTML += `
-          <li class="flex justify-between">
+          <li class="flex justify-between items-center">
             <span>${item.ten}</span>
-            <span class="text-green-600 font-bold">${item.gia}</span>
+            <div class="flex items-center space-x-2">
+              <span class="text-green-600 font-bold">${item.gia}</span>
+              <button onclick="xoaItem(${index})" class="text-red-600 font-bold">✖</button>
+            </div>
           </li>
         `;
       });
       cartBox.classList.remove("hidden");
     }
 
+    function xoaItem(index) {
+      cart.splice(index,1);
+      renderCart();
+    }
+
+    function huyGioHang() {
+      cart = [];
+      renderCart();
+      document.getElementById("giohang").classList.add("hidden");
+    }
+
     function thanhToan() {
-      alert("Chức năng thanh toán đang được phát triển!");
+      if(cart.length === 0) {
+        alert("Giỏ hàng trống!");
+        return;
+      }
+      alert("Chức năng thanh toán đang phát triển!");
     }
 
     renderPlans();
