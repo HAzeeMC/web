@@ -1,90 +1,103 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cheap Hosting</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Cheap Hosting</title>
+<script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 text-gray-900">
-
-<header class="bg-indigo-600 text-white shadow-md sticky top-0 z-50">
-  <div class="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
-    <h1 class="text-2xl font-bold">🔥 Cheap Hosting</h1>
-    <a href="index.html" class="bg-white text-indigo-700 px-4 py-2 rounded-lg font-bold">⬅ Trang chủ</a>
-  </div>
-</header>
-
-<main class="max-w-7xl mx-auto px-6 py-12">
-  <h2 class="text-3xl font-bold mb-6">Danh sách gói Cheap (10 plans)</h2>
-  <div class="grid md:grid-cols-3 gap-6">
-
-    <!-- Cheap Plans -->
-    <script>
-      const cheapPlans = [
-        {ten:"Super Cheap",cpu:"200%",ram:"2GB",ssd:"10GB",gia:"40.000 VNĐ"},
-        {ten:"Cheap 1",cpu:"200%",ram:"4GB",ssd:"20GB",gia:"55.000 VNĐ"},
-        {ten:"Cheap 2",cpu:"250%",ram:"5GB",ssd:"30GB",gia:"60.000 VNĐ"},
-        {ten:"Cheap 3",cpu:"300%",ram:"6GB",ssd:"40GB",gia:"70.000 VNĐ"},
-        {ten:"Cheap 4",cpu:"400%",ram:"8GB",ssd:"50GB",gia:"80.000 VNĐ"},
-        {ten:"Cheap 5",cpu:"400%",ram:"10GB",ssd:"60GB",gia:"95.000 VNĐ"},
-        {ten:"Cheap 6",cpu:"500%",ram:"12GB",ssd:"70GB",gia:"110.000 VNĐ"},
-        {ten:"Cheap 7",cpu:"600%",ram:"16GB",ssd:"80GB",gia:"145.000 VNĐ"},
-        {ten:"Cheap 8",cpu:"800%",ram:"20GB",ssd:"90GB",gia:"180.000 VNĐ"},
-        {ten:"Cheap 9",cpu:"1000%",ram:"25GB",ssd:"100GB",gia:"220.000 VNĐ"},
-      ];
-    </script>
-
-  </div>
-</main>
-
-<div id="giohang" class="fixed bottom-4 right-4 bg-white border shadow-lg p-4 rounded-xl w-80 hidden">
-  <h4 class="font-bold text-lg mb-2">🛒 Giỏ hàng</h4>
-  <ul id="cartItems" class="text-sm text-gray-700 space-y-2"></ul>
-  <div class="flex space-x-2 mt-4">
-    <button onclick="thanhToan()" class="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-800">Thanh toán</button>
-    <button onclick="huyGioHang()" class="flex-1 bg-red-600 text-white py-2 rounded-lg hover:bg-red-800">Hủy</button>
-  </div>
-</div>
-
-<script>
-  let cart = [];
-  const container = document.querySelector(".grid");
-
-  cheapPlans.forEach((plan, i) => {
-    container.innerHTML += `
-      <div class="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition">
-        <h4 class="text-xl font-bold text-indigo-600">${plan.ten}</h4>
-        <p class="mt-2 text-gray-600">CPU: ${plan.cpu} | RAM: ${plan.ram} | SSD: NVMe ${plan.ssd}</p>
-        <p class="mt-4 text-2xl font-bold text-green-600">${plan.gia}</p>
-        <button onclick="chonGoi('${plan.ten}','${plan.gia}')" class="mt-4 w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-800">Mua ngay</button>
-      </div>`;
-  });
-
-  function chonGoi(ten, gia) {
-    cart.push({ten, gia});
-    renderCart();
-  }
-  function renderCart() {
-    const cartBox = document.getElementById("giohang");
-    const list = document.getElementById("cartItems");
-    list.innerHTML = "";
-    cart.forEach((item, index) => {
-      list.innerHTML += `
-        <li class="flex justify-between items-center">
-          <span>${item.ten}</span>
-          <div class="flex items-center space-x-2">
-            <span class="text-green-600 font-bold">${item.gia}</span>
-            <button onclick="xoaItem(${index})" class="text-red-600 font-bold">✖</button>
-          </div>
-        </li>`;
-    });
-    cartBox.classList.remove("hidden");
-  }
-  function xoaItem(index){ cart.splice(index,1); renderCart();}
-  function huyGioHang(){ cart=[]; renderCart(); document.getElementById("giohang").classList.add("hidden");}
-  function thanhToan(){ if(cart.length===0){alert("Giỏ hàng trống!");return;} alert("Thanh toán demo!"); }
-</script>
-
+  <header class="bg-indigo-600 text-white p-4">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <h1 class="text-2xl font-bold">🌐 Cheap Hosting</h1>
+      <a href="index.html" class="bg-white text-indigo-700 px-3 py-2 rounded">Trang chủ</a>
+    </div>
+  </header>
+  <main class="max-w-6xl mx-auto p-6">
+    <h2 class="text-2xl font-bold mb-6">Danh sách gói Cheap Hosting</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      
+      <div class="bg-white rounded p-6 shadow">
+        <h3 class="font-bold text-xl">Super Cheap</h3>
+        <p class="text-sm text-gray-600 mt-2">CPU: 200% | RAM: 2GB | SSD: 10GB</p>
+        <p class="mt-3 font-bold text-green-600">40.000 VNĐ</p>
+        <div class="mt-4 flex space-x-2">
+          <a href="checkout.html?plan=Super Cheap&price=40.000 VNĐ" class="flex-1 bg-indigo-600 text-white py-2 rounded text-center">Mua ngay</a>
+        </div>
+      </div>
+      <div class="bg-white rounded p-6 shadow">
+        <h3 class="font-bold text-xl">Cheap 1</h3>
+        <p class="text-sm text-gray-600 mt-2">CPU: 200% | RAM: 4GB | SSD: 20GB</p>
+        <p class="mt-3 font-bold text-green-600">55.000 VNĐ</p>
+        <div class="mt-4 flex space-x-2">
+          <a href="checkout.html?plan=Cheap 1&price=55.000 VNĐ" class="flex-1 bg-indigo-600 text-white py-2 rounded text-center">Mua ngay</a>
+        </div>
+      </div>
+      <div class="bg-white rounded p-6 shadow">
+        <h3 class="font-bold text-xl">Cheap 2</h3>
+        <p class="text-sm text-gray-600 mt-2">CPU: 250% | RAM: 5GB | SSD: 30GB</p>
+        <p class="mt-3 font-bold text-green-600">60.000 VNĐ</p>
+        <div class="mt-4 flex space-x-2">
+          <a href="checkout.html?plan=Cheap 2&price=60.000 VNĐ" class="flex-1 bg-indigo-600 text-white py-2 rounded text-center">Mua ngay</a>
+        </div>
+      </div>
+      <div class="bg-white rounded p-6 shadow">
+        <h3 class="font-bold text-xl">Cheap 3</h3>
+        <p class="text-sm text-gray-600 mt-2">CPU: 300% | RAM: 6GB | SSD: 40GB</p>
+        <p class="mt-3 font-bold text-green-600">70.000 VNĐ</p>
+        <div class="mt-4 flex space-x-2">
+          <a href="checkout.html?plan=Cheap 3&price=70.000 VNĐ" class="flex-1 bg-indigo-600 text-white py-2 rounded text-center">Mua ngay</a>
+        </div>
+      </div>
+      <div class="bg-white rounded p-6 shadow">
+        <h3 class="font-bold text-xl">Cheap 4</h3>
+        <p class="text-sm text-gray-600 mt-2">CPU: 400% | RAM: 8GB | SSD: 50GB</p>
+        <p class="mt-3 font-bold text-green-600">80.000 VNĐ</p>
+        <div class="mt-4 flex space-x-2">
+          <a href="checkout.html?plan=Cheap 4&price=80.000 VNĐ" class="flex-1 bg-indigo-600 text-white py-2 rounded text-center">Mua ngay</a>
+        </div>
+      </div>
+      <div class="bg-white rounded p-6 shadow">
+        <h3 class="font-bold text-xl">Cheap 5</h3>
+        <p class="text-sm text-gray-600 mt-2">CPU: 400% | RAM: 10GB | SSD: 60GB</p>
+        <p class="mt-3 font-bold text-green-600">95.000 VNĐ</p>
+        <div class="mt-4 flex space-x-2">
+          <a href="checkout.html?plan=Cheap 5&price=95.000 VNĐ" class="flex-1 bg-indigo-600 text-white py-2 rounded text-center">Mua ngay</a>
+        </div>
+      </div>
+      <div class="bg-white rounded p-6 shadow">
+        <h3 class="font-bold text-xl">Cheap 6</h3>
+        <p class="text-sm text-gray-600 mt-2">CPU: 500% | RAM: 12GB | SSD: 70GB</p>
+        <p class="mt-3 font-bold text-green-600">110.000 VNĐ</p>
+        <div class="mt-4 flex space-x-2">
+          <a href="checkout.html?plan=Cheap 6&price=110.000 VNĐ" class="flex-1 bg-indigo-600 text-white py-2 rounded text-center">Mua ngay</a>
+        </div>
+      </div>
+      <div class="bg-white rounded p-6 shadow">
+        <h3 class="font-bold text-xl">Cheap 7</h3>
+        <p class="text-sm text-gray-600 mt-2">CPU: 600% | RAM: 16GB | SSD: 80GB</p>
+        <p class="mt-3 font-bold text-green-600">145.000 VNĐ</p>
+        <div class="mt-4 flex space-x-2">
+          <a href="checkout.html?plan=Cheap 7&price=145.000 VNĐ" class="flex-1 bg-indigo-600 text-white py-2 rounded text-center">Mua ngay</a>
+        </div>
+      </div>
+      <div class="bg-white rounded p-6 shadow">
+        <h3 class="font-bold text-xl">Cheap 8</h3>
+        <p class="text-sm text-gray-600 mt-2">CPU: 800% | RAM: 20GB | SSD: 90GB</p>
+        <p class="mt-3 font-bold text-green-600">180.000 VNĐ</p>
+        <div class="mt-4 flex space-x-2">
+          <a href="checkout.html?plan=Cheap 8&price=180.000 VNĐ" class="flex-1 bg-indigo-600 text-white py-2 rounded text-center">Mua ngay</a>
+        </div>
+      </div>
+      <div class="bg-white rounded p-6 shadow">
+        <h3 class="font-bold text-xl">Cheap 9</h3>
+        <p class="text-sm text-gray-600 mt-2">CPU: 1000% | RAM: 25GB | SSD: 100GB</p>
+        <p class="mt-3 font-bold text-green-600">220.000 VNĐ</p>
+        <div class="mt-4 flex space-x-2">
+          <a href="checkout.html?plan=Cheap 9&price=220.000 VNĐ" class="flex-1 bg-indigo-600 text-white py-2 rounded text-center">Mua ngay</a>
+        </div>
+      </div>
+    </div>
+  </main>
 </body>
 </html>
