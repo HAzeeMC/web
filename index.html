@@ -3,194 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bán Hosting Minecraft</title>
+  <title>Hosting Plans</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 text-gray-900">
 
-  <!-- Header -->
   <header class="bg-indigo-600 text-white shadow-md sticky top-0 z-50">
     <div class="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
-      <h1 class="text-2xl font-bold">🌐 EnderCloud</h1>
+      <h1 class="text-2xl font-bold">🌐 Hosting Plans</h1>
 
       <!-- Dropdown chọn hosting -->
       <div class="relative">
         <button onclick="toggleMenu()" class="bg-white text-indigo-700 px-4 py-2 rounded-lg font-bold">
-          CHỌN DANH MỤC DỊCH VỤ KHÁC ▼
+          CHỌN DANH MỤC DỊCH VỤ ▼
         </button>
         <ul id="dropdownMenu" class="absolute right-0 mt-2 bg-white text-black rounded-lg shadow-lg w-64 hidden">
-          <li><a href="#cheap" class="block px-4 py-2 hover:bg-indigo-100">🔥 Cheap Hosting</a></li>
-          <li><a href="#basic" class="block px-4 py-2 hover:bg-indigo-100">💡 Basic Hosting</a></li>
-          <li><a href="#medium" class="block px-4 py-2 hover:bg-indigo-100">⚡ Medium Hosting</a></li>
-          <li><a href="#premium" class="block px-4 py-2 hover:bg-indigo-100">💎 Premium Hosting</a></li>
+          <li><a href="cheap.html" class="block px-4 py-2 hover:bg-indigo-100">🔥 Cheap Hosting</a></li>
+          <li><a href="basic.html" class="block px-4 py-2 hover:bg-indigo-100">💡 Basic Hosting</a></li>
+          <li><a href="medium.html" class="block px-4 py-2 hover:bg-indigo-100">⚡ Medium Hosting</a></li>
+          <li><a href="premium.html" class="block px-4 py-2 hover:bg-indigo-100">💎 Premium Hosting</a></li>
         </ul>
       </div>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="bg-gradient-to-r from-indigo-700 to-purple-700 text-white py-16 text-center">
-    <h2 class="text-4xl font-bold">Chọn gói Hosting phù hợp cho bạn</h2>
-    <p class="mt-4 text-lg">Hiệu năng mạnh mẽ - Giá cả hợp lý - Antiddos cơ bản miễn phí</p>
+  <section class="bg-gradient-to-r from-indigo-700 to-purple-700 text-white py-20 text-center">
+    <h2 class="text-4xl font-bold">Chọn gói Hosting phù hợp</h2>
+    <p class="mt-4 text-lg">Hiệu năng mạnh mẽ - Giá cả hợp lý</p>
   </section>
 
-  <!-- Hosting Plans -->
-  <main class="max-w-7xl mx-auto px-6 py-12 space-y-16" id="plansContainer"></main>
-
-  <!-- Cart -->
-  <div id="giohang" class="fixed bottom-4 right-4 bg-white border shadow-lg p-4 rounded-xl w-80 hidden">
-    <h4 class="font-bold text-lg mb-2">🛒 Giỏ hàng</h4>
-    <ul id="cartItems" class="text-sm text-gray-700 space-y-2"></ul>
-    <div class="flex space-x-2 mt-4">
-      <button onclick="thanhToan()" class="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-800">Thanh toán</button>
-      <button onclick="huyGioHang()" class="flex-1 bg-red-600 text-white py-2 rounded-lg hover:bg-red-800">Hủy</button>
-    </div>
-  </div>
-
-  <!-- Footer -->
   <footer class="bg-gray-900 text-gray-400 py-6 mt-16 text-center">
     <p>© 2025 Hosting Giá Rẻ - All rights reserved.</p>
   </footer>
 
-  <!-- Script -->
   <script>
-    // toggle dropdown
     function toggleMenu() {
       document.getElementById("dropdownMenu").classList.toggle("hidden");
     }
-
-    // dữ liệu hosting
-    const plansData = {
-      cheap: {
-        title: "🔥 Cheap Plans (E5-2680 v4 @ 3.3GHz)",
-        plans: Array.from({length: 10}, (_, i) => ({
-          name: `Cheap ${i+1}`,
-          cpu: `${200 + i*50}%`,
-          ram: `${2 + i}GB`,
-          ssd: `NVMe ${(10 + i*5)}GB`,
-          ports: 3,
-          backups: 1,
-          antiddos: "Basic",
-          price: `${50_000 + i*10_000} VNĐ`
-        }))
-      },
-      basic: {
-        title: "💡 Basic Plans (Xeon Gold 6148 @ 3.7GHz)",
-        plans: Array.from({length: 9}, (_, i) => ({
-          name: `Basic ${i+1}`,
-          cpu: `${200 + i*100}%`,
-          ram: `${4 + i*2}GB`,
-          ssd: `NVMe ${(20 + i*10)}GB`,
-          ports: 3,
-          backups: 1,
-          antiddos: "Basic",
-          price: `${100_000 + i*30_000} VNĐ`
-        }))
-      },
-      medium: {
-        title: "⚡ Medium Plans (Xeon Gold 6144 @ 4.2GHz)",
-        plans: Array.from({length: 9}, (_, i) => ({
-          name: `Medium ${i+1}`,
-          cpu: `${300 + i*150}%`,
-          ram: `${6 + i*2}GB`,
-          ssd: `NVMe ${(40 + i*15)}GB`,
-          ports: 3,
-          backups: 1,
-          antiddos: "Basic",
-          price: `${200_000 + i*50_000} VNĐ`
-        }))
-      },
-      premium: {
-        title: "💎 Premium Plans (Ryzen 9 5950X / i5-12400)",
-        plans: Array.from({length: 5}, (_, i) => ({
-          name: `Premium ${i+1}`,
-          cpu: `${2+i} Core`,
-          ram: `${8*(i+1)}GB`,
-          ssd: `NVMe ${(80*(i+1))}GB`,
-          ports: 3,
-          backups: 1,
-          antiddos: "Advanced",
-          price: `${500_000 + i*300_000} VNĐ`
-        }))
-      }
-    };
-
-    // render plans
-    function renderPlans() {
-      const container = document.getElementById("plansContainer");
-      container.innerHTML = "";
-      for (let section in plansData) {
-        let html = `
-          <section id="${section}">
-            <h3 class="text-3xl font-bold mb-6">${plansData[section].title}</h3>
-            <div class="grid md:grid-cols-3 gap-6">
-        `;
-        plansData[section].plans.forEach(p => {
-          html += `
-            <div class="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition">
-              <h4 class="text-xl font-bold text-indigo-600">${p.name}</h4>
-              <p class="mt-2 text-gray-600">CPU: ${p.cpu} | RAM: ${p.ram} | SSD: ${p.ssd}</p>
-              <ul class="mt-4 space-y-1 text-sm">
-                <li>Ports: ${p.ports}</li>
-                <li>Backups: ${p.backups}</li>
-                <li>Antiddos: ${p.antiddos}</li>
-              </ul>
-              <p class="mt-4 text-2xl font-bold text-green-600">${p.price}</p>
-              <button onclick="chonGoi('${p.name}','${p.price}')" 
-                      class="mt-4 w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-800">Mua ngay</button>
-            </div>
-          `;
-        });
-        html += "</div></section>";
-        container.innerHTML += html;
-      }
-    }
-
-    // giỏ hàng
-    let cart = [];
-    function chonGoi(ten, gia) {
-      cart.push({ten, gia});
-      renderCart();
-    }
-
-    function renderCart() {
-      const cartBox = document.getElementById("giohang");
-      const list = document.getElementById("cartItems");
-      list.innerHTML = "";
-      cart.forEach((item, index) => {
-        list.innerHTML += `
-          <li class="flex justify-between items-center">
-            <span>${item.ten}</span>
-            <div class="flex items-center space-x-2">
-              <span class="text-green-600 font-bold">${item.gia}</span>
-              <button onclick="xoaItem(${index})" class="text-red-600 font-bold">✖</button>
-            </div>
-          </li>
-        `;
-      });
-      cartBox.classList.remove("hidden");
-    }
-
-    function xoaItem(index) {
-      cart.splice(index,1);
-      renderCart();
-    }
-
-    function huyGioHang() {
-      cart = [];
-      renderCart();
-      document.getElementById("giohang").classList.add("hidden");
-    }
-
-    function thanhToan() {
-      if(cart.length === 0) {
-        alert("Giỏ hàng trống!");
-        return;
-      }
-      alert("Chức năng thanh toán đang phát triển!");
-    }
-
-    renderPlans();
   </script>
+
 </body>
 </html>
