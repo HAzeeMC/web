@@ -1,46 +1,65 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hosting Plans</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EnderCloud - Hosting Minecraft</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 text-gray-900">
+<body class="bg-slate-950 text-white">
 
-  <header class="bg-indigo-600 text-white shadow-md sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
-      <h1 class="text-2xl font-bold">🌐 Hosting Plans</h1>
-
-      <!-- Dropdown chọn hosting -->
-      <div class="relative">
-        <button onclick="toggleMenu()" class="bg-white text-indigo-700 px-4 py-2 rounded-lg font-bold">
-          CHỌN DANH MỤC DỊCH VỤ ▼
-        </button>
-        <ul id="dropdownMenu" class="absolute right-0 mt-2 bg-white text-black rounded-lg shadow-lg w-64 hidden">
-          <li><a href="cheap.html" class="block px-4 py-2 hover:bg-indigo-100">🔥 Cheap Hosting</a></li>
-          <li><a href="basic.html" class="block px-4 py-2 hover:bg-indigo-100">💡 Basic Hosting</a></li>
-          <li><a href="medium.html" class="block px-4 py-2 hover:bg-indigo-100">⚡ Medium Hosting</a></li>
-          <li><a href="premium.html" class="block px-4 py-2 hover:bg-indigo-100">💎 Premium Hosting</a></li>
-        </ul>
-      </div>
+  <!-- Header -->
+  <header class="bg-slate-900/70 backdrop-blur border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <h1 class="text-xl font-bold text-sky-400">EnderCloud</h1>
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center space-x-6">
+        <div class="relative group">
+          <button class="flex items-center gap-1">Chọn Hosting</button>
+          <div class="absolute hidden group-hover:block bg-slate-800 border border-slate-700 rounded-lg mt-2 w-64">
+            <a href="cheap.html" class="block px-4 py-2 hover:bg-slate-700">Cheap Hosting</a>
+            <a href="basic.html" class="block px-4 py-2 hover:bg-slate-700">Basic Hosting</a>
+            <a href="medium.html" class="block px-4 py-2 hover:bg-slate-700">Medium Hosting</a>
+            <a href="premium.html" class="block px-4 py-2 hover:bg-slate-700">Premium Hosting</a>
+          </div>
+        </div>
+        <a href="https://discord.gg/jnVqH3Dfs9" target="_blank" class="text-sm hover:text-sky-300">Hỗ Trợ</a>
+        <a href="#" class="text-sm hover:text-sky-300">Đăng Nhập</a>
+      </nav>
+      <!-- Mobile Button -->
+      <button id="menuBtn" class="md:hidden">☰</button>
     </div>
   </header>
 
-  <section class="bg-gradient-to-r from-indigo-700 to-purple-700 text-white py-20 text-center">
-    <h2 class="text-4xl font-bold">Chọn gói Hosting phù hợp</h2>
-    <p class="mt-4 text-lg">Hiệu năng mạnh mẽ - Giá cả hợp lý</p>
+  <!-- Mobile Menu -->
+  <div id="mobilePanel" class="hidden md:hidden bg-slate-900/95 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-6 py-4 space-y-2">
+      <a href="cheap.html" class="block py-2">Cheap Hosting</a>
+      <a href="basic.html" class="block py-2">Basic Hosting</a>
+      <a href="medium.html" class="block py-2">Medium Hosting</a>
+      <a href="premium.html" class="block py-2">Premium Hosting</a>
+      <a href="https://discord.gg/jnVqH3Dfs9" target="_blank" class="block py-2">Hỗ Trợ</a>
+      <a href="#" class="block py-2">Đăng Nhập</a>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="text-center py-20">
+    <h2 class="text-4xl font-bold mb-4">EnderCloud - Giải pháp Hosting Minecraft tối ưu</h2>
+    <p class="text-slate-400 max-w-2xl mx-auto">
+      Chọn gói hosting phù hợp nhu cầu của bạn. Thanh toán nhanh chóng, có thể hủy bất cứ lúc nào.
+    </p>
   </section>
 
-  <footer class="bg-gray-900 text-gray-400 py-6 mt-16 text-center">
-    <p>© 2025 Hosting Giá Rẻ - All rights reserved.</p>
+  <!-- Footer -->
+  <footer class="bg-slate-900/70 border-t border-slate-800 py-6 text-center text-slate-500">
+    © 2025 EnderCloud. All rights reserved.
   </footer>
 
   <script>
-    function toggleMenu() {
-      document.getElementById("dropdownMenu").classList.toggle("hidden");
-    }
+    document.getElementById("menuBtn").addEventListener("click", () => {
+      document.getElementById("mobilePanel").classList.toggle("hidden");
+    });
   </script>
-
 </body>
 </html>
