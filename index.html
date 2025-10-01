@@ -1,98 +1,49 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EnderCloud - Hosting Minecraft</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body {
-      background: linear-gradient(to bottom right, #0f172a, #1e293b);
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EnderCloud - Dịch vụ Hosting & VPS</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="text-white font-sans">
-
+<body>
   <!-- Header -->
-  <header class="bg-slate-900/80 backdrop-blur border-b border-slate-800 fixed w-full top-0 z-50">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-      <h1 class="text-xl font-bold text-sky-400">EnderCloud</h1>
-
-      <!-- Nav -->
-      <nav class="hidden md:flex items-center space-x-6">
-        <!-- Dropdown -->
-        <div class="relative">
-          <button id="hostingBtn" class="flex items-center gap-1">
-            Chọn Hosting ▼
-          </button>
-          <div id="hostingMenu" class="hidden absolute bg-slate-800 border border-slate-700 rounded-lg mt-2 w-56 shadow-lg">
-            <a href="cheap.html" class="block px-4 py-2 hover:bg-slate-700">Cheap Hosting</a>
-            <a href="basic.html" class="block px-4 py-2 hover:bg-slate-700">Basic Hosting</a>
-            <a href="medium.html" class="block px-4 py-2 hover:bg-slate-700">Medium Hosting</a>
-            <a href="premium.html" class="block px-4 py-2 hover:bg-slate-700">Premium Hosting</a>
-          </div>
-        </div>
-        <a href="https://discord.gg/jnVqH3Dfs9" target="_blank" class="hover:text-sky-300">Hỗ Trợ</a>
-        <a href="#" class="hover:text-sky-300">Đăng Nhập</a>
-      </nav>
-
-      <!-- Mobile -->
-      <button id="menuBtn" class="md:hidden">☰</button>
-    </div>
+  <header class="navbar">
+    <div class="logo">EnderCloud</div>
+    <nav>
+      <ul class="menu">
+        <li class="dropdown">
+          <a href="#">Chọn Hosting ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="cheap.html">Cheap Hosting</a></li>
+            <li><a href="basic.html">Basic Hosting</a></li>
+            <li><a href="medium.html">Medium Hosting</a></li>
+            <li><a href="premium.html">Premium Hosting</a></li>
+          </ul>
+        </li>
+        <li><a href="https://discord.gg/jnVqH3Dfs9" target="_blank">Hỗ Trợ</a></li>
+        <li><a href="#">Đăng Nhập</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <!-- Mobile Menu -->
-  <div id="mobilePanel" class="hidden md:hidden bg-slate-900/95 border-t border-slate-800 mt-16">
-    <div class="max-w-7xl mx-auto px-6 py-4 space-y-2">
-      <a href="cheap.html" class="block py-2">Cheap Hosting</a>
-      <a href="basic.html" class="block py-2">Basic Hosting</a>
-      <a href="medium.html" class="block py-2">Medium Hosting</a>
-      <a href="premium.html" class="block py-2">Premium Hosting</a>
-      <a href="https://discord.gg/jnVqH3Dfs9" target="_blank" class="block py-2">Hỗ Trợ</a>
-      <a href="#" class="block py-2">Đăng Nhập</a>
-    </div>
-  </div>
-
   <!-- Hero -->
-  <section class="pt-32 pb-20 text-center">
-    <h2 class="text-5xl font-extrabold mb-6">
-      Dịch vụ cho thuê máy chủ <span class="text-sky-400">Game Việt Nam</span>
-    </h2>
-    <p class="text-slate-300 max-w-2xl mx-auto text-lg">
-      EnderCloud mang đến giải pháp lưu trữ Minecraft và game server tối ưu, 
-      chất lượng cao, giá cả hợp lý, hỗ trợ 24/7.
-    </p>
-    <div class="mt-8 space-x-4">
-      <a href="cheap.html" class="px-6 py-3 bg-sky-500 hover:bg-sky-600 rounded-lg font-medium">
-        Tạo máy chủ ngay
-      </a>
-      <a href="https://discord.gg/jnVqH3Dfs9" target="_blank" class="px-6 py-3 bg-slate-800 hover:bg-slate-700 rounded-lg font-medium">
-        Liên hệ hỗ trợ
-      </a>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Dịch vụ cho thuê máy chủ <span class="highlight">Game Việt Nam</span></h1>
+      <p>EnderCloud tự hào mang đến dịch vụ cho thuê máy chủ chất lượng cao, hiệu năng ổn định và giá cả hợp lý.</p>
+      <div class="hero-buttons">
+        <a href="cheap.html" class="btn btn-primary">Tạo máy chủ Game</a>
+        <a href="https://discord.gg/jnVqH3Dfs9" target="_blank" class="btn btn-secondary">Tư vấn ngay</a>
+      </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-slate-900/80 border-t border-slate-800 py-6 text-center text-slate-500">
-    © 2025 EnderCloud. All rights reserved.
+  <footer class="footer">
+    <p>© 2025 EnderCloud. All rights reserved.</p>
   </footer>
 
-  <script>
-    // Toggle dropdown menu
-    const hostingBtn = document.getElementById("hostingBtn");
-    const hostingMenu = document.getElementById("hostingMenu");
-    document.addEventListener("click", (e) => {
-      if (hostingBtn.contains(e.target)) {
-        hostingMenu.classList.toggle("hidden");
-      } else if (!hostingMenu.contains(e.target)) {
-        hostingMenu.classList.add("hidden");
-      }
-    });
-
-    // Mobile menu toggle
-    document.getElementById("menuBtn").addEventListener("click", () => {
-      document.getElementById("mobilePanel").classList.toggle("hidden");
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
